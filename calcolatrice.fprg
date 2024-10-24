@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="sfrat"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-24 05:16:12 "/>
+        <attribute name="created" value="c2ZyYXQ7REVTS1RPUC1LUFNRMVVLOzIwMjQtMTAtMjQ7IjA0OjE3OjMxICI7Mjg0MQ=="/>
+        <attribute name="edited" value="c2ZyYXQ7REVTS1RPUC1LUFNRMVVLOzIwMjQtMTAtMjQ7IjA1OjE2OjEyICI7MTsyOTQ4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="dichiarazione variabili numeri operazioni e risultato&#13;&#10;"/>
+            <declare name="primoNumero, secondoNumero, totale" type="Real" array="False" size=""/>
+            <comment text="dichiarazione variabile operatore&#13;&#10;"/>
+            <declare name="operazione" type="String" array="False" size=""/>
+            <output expression="&quot;Inserisci il primo numero&quot;" newline="True"/>
+            <input variable="primoNumero"/>
+            <output expression="&quot;Inserisci il secondo numero&quot;" newline="True"/>
+            <input variable="secondoNumero"/>
+            <output expression="&quot;Inserisci l'operatore matematico (/,*,-,+)&quot;" newline="True"/>
+            <input variable="operazione"/>
+            <comment text="controllo operatore uguale a quelli predefiniti"/>
+            <while expression="(operazione != &quot;+&quot;)&amp;&amp;(operazione != &quot;-&quot;)&amp;&amp;(operazione != &quot;*&quot;)&amp;&amp;(operazione != &quot;/&quot;)">
+                <output expression="&quot;Hai inserito un operatore diverso da quelli indicati, riprova:&quot;" newline="False"/>
+                <input variable="operazione"/>
+            </while>
+            <comment text="controllo operazione +"/>
+            <if expression="operazione == &quot;+&quot;">
+                <then>
+                    <assign variable="totale" expression="primoNumero + secondoNumero"/>
+                    <output expression="&quot;il totale della somma &#232;: &quot;" newline="False"/>
+                </then>
+                <else>
+                    <comment text="controllo operazione -"/>
+                    <if expression="operazione == &quot;-&quot;">
+                        <then>
+                            <assign variable="totale" expression="primoNumero - secondoNumero"/>
+                            <output expression="&quot;il totale della sottrazione &#232;: &quot;" newline="False"/>
+                        </then>
+                        <else>
+                            <comment text="controllo operazione *"/>
+                            <if expression="operazione == &quot;*&quot;">
+                                <then>
+                                    <assign variable="totale" expression="primoNumero * secondoNumero"/>
+                                    <output expression="&quot;il totale della moltiplicazione &#232;: &quot;" newline="False"/>
+                                </then>
+                                <else>
+                                    <comment text="controllo divisibilit&#224; per 0"/>
+                                    <while expression="secondoNumero == 0">
+                                        <output expression="&quot;Il secondo numero &#232; uguale a zero, inserire un numero diverso: &quot;" newline="False"/>
+                                        <input variable="secondoNumero"/>
+                                    </while>
+                                    <assign variable="totale" expression="primoNumero / secondoNumero"/>
+                                    <output expression="&quot;il totale della divisione &#232;: &quot;" newline="False"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="totale" newline="False"/>
+        </body>
+    </function>
+</flowgorithm>
